@@ -1,4 +1,4 @@
-= epubinfo
+= epubinfo {<img src="https://secure.travis-ci.org/chdorner/epubinfo.png?branch=master" alt="Continuous Integration" />}[http://travis-ci.org/chdorner/epubinfo] {<img src="https://gemnasium.com/chdorner/epubinfo.png" alt="Dependencies" />}[http://gemnasium.com/chdorner/epubinfo]
 
 Extracts metadata information from EPUB files. Currently only supports EPUB 3 specification.
 
