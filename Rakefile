@@ -30,12 +30,9 @@ RSpec::Core::RakeTask.new(:spec)
 
 task :default => :spec
 
-require 'rdoc/task'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "epubinfo #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+require 'yard'
+YARD::Rake::YardocTask.new do |t|
+  t.files   = ['lib/**/*.rb', 'epubinfo.rb', '-', 'REAMDE.rdoc']
+  #t.options = ['--any', '--extra', '--opts']
 end
+
