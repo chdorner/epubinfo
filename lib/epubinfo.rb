@@ -1,0 +1,3 @@
+class EPUBInfo
+
+end
