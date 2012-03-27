@@ -1,6 +1,6 @@
 = epubinfo
 
-Description goes here.
+Extracts metadata information from EPUB files. Currently only supports EPUB 3 specification.
 
 == Contributing to epubinfo
  
