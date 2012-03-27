@@ -12,3 +12,6 @@ rvm:
   - ruby-head
   - jruby-head
 
+before_install:
+  - gem install bundler
+
