@@ -15,11 +15,11 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "epubinfo"
-  gem.homepage = "http://github.com/christof@chdorner.com/epubinfo"
+  gem.homepage = "http://github.com/chdorner/epubinfo"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "christof@chdorner.me"
+  gem.summary = %Q{Extracts metadata information from EPUB files}
+  gem.description = %Q{Currently only supports EPUB 3 specification.}
+  gem.email = "christof@chdorner.com"
   gem.authors = ["Christof Dorner"]
   # dependencies defined in Gemfile
 end
