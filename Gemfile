@@ -1,4 +1,8 @@
 source "http://rubygems.org"
+
+gem "rubyzip", "~> 0.9.6"
+gem "nokogiri", "~> 1.5.2"
+
 # Add dependencies required to use your gem here.
 # Example:
 #   gem "activesupport", ">= 2.3.5"
