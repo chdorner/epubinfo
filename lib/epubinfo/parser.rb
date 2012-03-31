@@ -1,11 +1,15 @@
 module EPUBInfo
   class Parser
-    attr_accessor :path
+    attr_accessor :path, :metadata_document
 
     def self.parse(path)
       epubinfo = EPUBInfo::Parser.new
       epubinfo.path = path
       epubinfo
+    end
+
+    def metadata_document
+      @metadata_document ||= load_metadata_file
     end
 
     private
@@ -26,7 +30,7 @@ module EPUBInfo
 
     def load_metadata_file
       load_epub if @zipfile.nil?
-      @metadata_document ||= Nokogiri::XML(@zipfile.read(metadata_path))
+      Nokogiri::XML(@zipfile.read(metadata_path))
     end
   end
 end

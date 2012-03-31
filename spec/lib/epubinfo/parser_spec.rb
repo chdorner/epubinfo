@@ -51,8 +51,7 @@ describe EPUBInfo::Parser do
   describe '#load_metadata_file' do
     it 'should assign nokogiri document to @metadata_document' do
       parser.send(:load_root_file)
-      parser.send(:load_metadata_file)
-      parser.instance_variable_get(:@metadata_document).should be_kind_of Nokogiri::XML::Document
+      parser.send(:load_metadata_file).should be_kind_of Nokogiri::XML::Document
     end
 
     it 'should call load_epub if @zipfile is nil' do
