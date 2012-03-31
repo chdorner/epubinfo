@@ -48,8 +48,22 @@ describe EPUBInfo::Parser do
     end
   end
 
+  describe '#metadata_document' do
+    it 'should call load_metadata_file and assign to @metadata_document' do
+      parser.should_receive(:load_metadata_file) { 'loaded' }
+      parser.metadata_document
+      parser.instance_variable_get(:@metadata_document).should == 'loaded'
+    end
+
+    it 'should not call load_metadata_file if @metadata_document is not nil' do
+      parser.instance_variable_set(:@metadata_document, 'loaded')
+      parser.should_not_receive(:load_metadata_file)
+      parser.metadata_document
+    end
+  end
+
   describe '#load_metadata_file' do
-    it 'should assign nokogiri document to @metadata_document' do
+    it 'should return xml document' do
       parser.send(:load_root_file)
       parser.send(:load_metadata_file).should be_kind_of Nokogiri::XML::Document
     end
