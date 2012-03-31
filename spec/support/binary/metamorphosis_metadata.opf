@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<package xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="id">
+  <metadata>
+    <dc:rights>Copyrighted. Read the copyright notice inside this book for details.</dc:rights>
+    <dc:identifier id="id" opf:scheme="URI">http://www.gutenberg.org/ebooks/5200</dc:identifier>
+    <dc:contributor opf:file-as="Wyllie, David" opf:role="trl">David Wyllie</dc:contributor>
+    <dc:creator opf:file-as="Kafka, Franz">Franz Kafka</dc:creator>
+    <dc:title>Metamorphosis</dc:title>
+    <dc:language xsi:type="dcterms:RFC4646">en</dc:language>
+    <dc:subject>Psychological fiction</dc:subject>
+    <dc:subject>Metamorphosis -- Fiction</dc:subject>
+    <dc:date opf:event="publication">2005-08-17</dc:date>
+    <dc:date opf:event="conversion">2010-02-15T04:42:48.107119+00:00</dc:date>
+    <dc:source>http://www.gutenberg.org/files/5200/5200-h/5200-h.htm</dc:source>
+    <meta content="item3" name="cover"/>
+  </metadata>
+  <manifest>
+    <item href="pgepub.css" id="item1" media-type="text/css"/>
+    <item href="www.gutenberg.org@files@5200@5200-h@5200-h-0.htm" id="item2" media-type="application/xhtml+xml"/>
+    <item href="cover.jpg" id="item3" media-type="image/jpeg"/>
+    <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="item2" linear="yes"/>
+  </spine>
+  <guide>
+    <reference href="cover.jpg" type="cover" title="Cover Image"/>
+  </guide>
+</package>
