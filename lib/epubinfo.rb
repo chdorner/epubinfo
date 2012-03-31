@@ -5,7 +5,7 @@ require 'epubinfo/parser'
 require 'epubinfo/model'
 
 module EPUBInfo
-  def self.parse(path)
-    
+  def self.get(path)
+    parser = EPUBInfo::Parser.parse(path)
   end
 end
