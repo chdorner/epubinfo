@@ -5,8 +5,15 @@ describe EPUBInfo do
 
   describe '#get' do
     it 'calls parser' do
-      EPUBInfo::Parser.should_receive(:parse)
+      document = EPUBInfo::Parser.parse(epub_path).metadata_document
+      EPUBInfo::Parser.should_receive(:parse) { document }
       EPUBInfo.get(epub_path)
+    end
+
+    it 'instanstiates a book model and returns it' do
+      book_mock = mock
+      EPUBInfo::Models::Book.should_receive(:new) { book_mock }
+      EPUBInfo.get(epub_path).should == book_mock
     end
   end
 end
