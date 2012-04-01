@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe EPUBInfo::Models::Book do
-  subject { EPUBInfo::Models::Book.new(Nokogiri::XML(File.new('spec/support/xml/metamorphosis_metadata.opf'))) }
+  subject { EPUBInfo::Models::Book.new(Nokogiri::XML(File.new('spec/support/xml/metamorphosis_metadata_epub2.opf'))) }
 
   its(:titles) { should == ['Metamorphosis'] }
   its(:subjects) { should == ['Psychological fiction', 'Metamorphosis -- Fiction'] }
