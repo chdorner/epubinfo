@@ -6,7 +6,9 @@ describe EPUBInfo do
   describe '#get' do
     it 'calls parser' do
       document = EPUBInfo::Parser.parse(epub_path).metadata_document
-      EPUBInfo::Parser.should_receive(:parse) { document }
+      parser = mock
+      parser.stub(:metadata_document)
+      EPUBInfo::Parser.should_receive(:parse) { parser }
       EPUBInfo.get(epub_path)
     end
 

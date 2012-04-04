@@ -1,8 +1,18 @@
 require 'spec_helper'
 
 describe EPUBInfo::Models::Date do
-  subject { EPUBInfo::Models::Date.new(Nokogiri::XML(File.new('spec/support/xml/metamorphosis_metadata_epub2.opf')).css('metadata').xpath('.//dc:date').first) }
+  describe '#initialize' do
+    subject { EPUBInfo::Models::Date.new(Nokogiri::XML(File.new('spec/support/xml/metamorphosis_metadata_epub2.opf')).css('metadata').xpath('.//dc:date').first) }
 
-  its(:time) { should == Time.parse('2005-08-17') }
-  its(:event) { should == 'publication' }
+    its(:time) { should == Time.parse('2005-08-17') }
+    its(:event) { should == 'publication' }
+  end
+
+  describe '#to_hash' do
+    context 'keys' do
+      subject { EPUBInfo::Models::Date.new(Nokogiri::XML(File.new('spec/support/xml/metamorphosis_metadata_epub2.opf')).css('metadata').xpath('.//dc:date').first).to_hash.keys }
+      it { should include :time }
+      it { should include :event }
+    end
+  end
 end

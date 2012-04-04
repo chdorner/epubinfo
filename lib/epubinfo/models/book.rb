@@ -28,6 +28,22 @@ module EPUBInfo
       def dates; @dates || []; end
       def identifiers; @identifiers || []; end
       def languages; @languages || []; end
+
+      def to_hash
+        {
+          :titles => @titles,
+          :creators => @creators.map(&:to_hash),
+          :subjects => @subjects,
+          :description => @description,
+          :publisher => @publisher,
+          :contributors => @contributors.map(&:to_hash),
+          :dates => @dates.map(&:to_hash),
+          :identifiers => @identifiers.map(&:to_hash),
+          :source => @source,
+          :languages => @languages,
+          :rights => @rights
+        }
+      end
     end
   end
 end

@@ -7,6 +7,13 @@ module EPUBInfo
         self.identifier = node.content
         self.scheme = node.attribute('scheme').content rescue nil
       end
+
+      def to_hash
+        {
+          :identifier => @identifier,
+          :scheme => @scheme
+        }
+      end
     end
   end
 end
