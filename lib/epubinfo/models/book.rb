@@ -1,10 +1,41 @@
 module EPUBInfo
   module Models
     class Book
-      attr_accessor :titles, :creators, :subjects, :description,
-        :publisher, :contributors, :dates, :identifiers,
-        :source, :languages, :rights
+      # Titles, array of String instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.1 EPUB2 reference})
+      # @return [Array]
+      attr_accessor :titles
+      # Creators, array of Person instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.2 EPUB2 reference})
+      # @return [Array]
+      attr_accessor :creators
+      # Subjects, array of String instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.3 EPUB2 reference})
+      # @return [Array]
+      attr_accessor :subjects
+      # Description ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.4 EPUB2 reference})
+      # @return [String]
+      attr_accessor :description
+      # Publisher ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.5 EPUB2 reference})
+      # @return [String]
+      attr_accessor :publisher
+      # Contributors, array of Person instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.6 EPUB2 reference})
+      # @return [Array]
+      attr_accessor :contributors
+      # Dates, array of Date instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.7 EPUB2 reference})
+      # @return [Array]
+      attr_accessor :dates
+      # Identifiers, array of Identifier instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.10 EPUB2 reference})
+      # @return [Array]
+      attr_accessor :identifiers
+      # Source ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.11 EPUB2 reference})
+      # @return [String]
+      attr_accessor :source
+      # Languages, array of String instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.12 EPUB2 reference})
+      # @return [Array]
+      attr_accessor :languages
+      # Rights ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.15 EPUB2 reference})
+      # @return [String]
+      attr_accessor :rights
 
+      # Should never be called directly, go through EPUBInfo.get
       def initialize(document)
         return if document.nil?
         metadata = document.css('metadata')
@@ -29,6 +60,8 @@ module EPUBInfo
       def identifiers; @identifiers || []; end
       def languages; @languages || []; end
 
+      # Returns Hash representation of the book
+      # @return [Hash]
       def to_hash
         {
           :titles => @titles,
