@@ -6,6 +6,7 @@ module EPUBInfo
         :source, :languages, :rights
 
       def initialize(document)
+        return if document.nil?
         metadata = document.css('metadata')
         self.titles = metadata.xpath('.//dc:title', EPUBInfo::Utils::DC_NAMESPACE).map(&:content)
         self.creators = metadata.xpath('.//dc:creator', EPUBInfo::Utils::DC_NAMESPACE).map {|c| EPUBInfo::Models::Person.new(c) }

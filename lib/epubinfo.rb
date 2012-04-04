@@ -13,6 +13,6 @@ module EPUBInfo
   # @return [EPUBInfo::Models::Book] the model
   def self.get(path)
     parser = EPUBInfo::Parser.parse(path)
-    EPUBInfo::Models::Book.new(parser)
+    EPUBInfo::Models::Book.new(parser.metadata_document)
   end
 end

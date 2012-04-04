@@ -1,3 +1,5 @@
+require 'time'
+
 module EPUBInfo
   module Models
     class Date
