@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/chdorner/epubinfo"
   gem.license = "MIT"
   gem.summary = %Q{Extracts metadata information from EPUB files}
-  gem.description = %Q{Currently only supports EPUB 3 specification.}
+  gem.description = %Q{Supports EPUB2 and EPUB3 formats.}
   gem.email = "christof@chdorner.com"
   gem.authors = ["Christof Dorner"]
   # dependencies defined in Gemfile
