@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "epubinfo"
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christof Dorner"]
-  s.date = "2012-04-01"
+  s.date = "2012-04-04"
   s.description = "Currently only supports EPUB 3 specification."
   s.email = "christof@chdorner.com"
   s.extra_rdoc_files = [
@@ -34,9 +34,9 @@ Gem::Specification.new do |s|
     "lib/epubinfo/models/person.rb",
     "lib/epubinfo/parser.rb",
     "lib/epubinfo/utils.rb",
-    "spec/lib/epubinfo/identifier_spec.rb",
     "spec/lib/epubinfo/models/book_spec.rb",
     "spec/lib/epubinfo/models/date_spec.rb",
+    "spec/lib/epubinfo/models/identifier_spec.rb",
     "spec/lib/epubinfo/models/person_spec.rb",
     "spec/lib/epubinfo/parser_spec.rb",
     "spec/lib/epubinfo_spec.rb",
