@@ -2,6 +2,13 @@
 
 Extracts metadata information from EPUB files. Supports EPUB2 and EPUB3 formats.
 
+== Usage
+
+  require 'epubinfo'
+  EPUBInfo.get('path/to/epub/file.epub')
+
+Which returns a +EPUBInfo::Models::Book+ instance, please refer to the {http://rubydoc.info/gems/epubinfo/0.2.2/frames}[API documentation] from here on
+
 == Contributing to epubinfo
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
