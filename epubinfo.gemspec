@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "epubinfo"
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christof Dorner"]
@@ -17,35 +17,13 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
-    ".document",
-    ".travis.yml",
-    "Gemfile",
-    "Gemfile.lock",
-    "Guardfile",
-    "LICENSE.txt",
-    "README.rdoc",
-    "Rakefile",
-    "VERSION",
-    "epubinfo.gemspec",
     "lib/epubinfo.rb",
     "lib/epubinfo/models/book.rb",
     "lib/epubinfo/models/date.rb",
     "lib/epubinfo/models/identifier.rb",
     "lib/epubinfo/models/person.rb",
     "lib/epubinfo/parser.rb",
-    "lib/epubinfo/utils.rb",
-    "spec/lib/epubinfo/models/book_spec.rb",
-    "spec/lib/epubinfo/models/date_spec.rb",
-    "spec/lib/epubinfo/models/identifier_spec.rb",
-    "spec/lib/epubinfo/models/person_spec.rb",
-    "spec/lib/epubinfo/parser_spec.rb",
-    "spec/lib/epubinfo_spec.rb",
-    "spec/spec_helper.rb",
-    "spec/support/binary/metamorphosis_epub2.epub",
-    "spec/support/binary/metamorphosis_epub2_drm.epub",
-    "spec/support/binary/wasteland_epub3.epub",
-    "spec/support/xml/metamorphosis_metadata_epub2.opf",
-    "spec/support/xml/wasteland_metadata_epub3.opf"
+    "lib/epubinfo/utils.rb"
   ]
   s.homepage = "http://github.com/chdorner/epubinfo"
   s.licenses = ["MIT"]
