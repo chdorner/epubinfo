@@ -21,6 +21,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{Supports EPUB2 and EPUB3 formats.}
   gem.email = "christof@chdorner.com"
   gem.authors = ["Christof Dorner"]
+  gem.files = Dir.glob('lib/**/*.rb')
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
