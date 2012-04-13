@@ -34,9 +34,14 @@ module EPUBInfo
       # Rights ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.15 EPUB2 reference})
       # @return [String]
       attr_accessor :rights
+      # DRM protected
+      # @return [Boolean]
+      attr_accessor :drm_protected
+      def drm_protected; @drm_protected || false; end
+      alias :drm_protected? :drm_protected
 
       # Should never be called directly, go through EPUBInfo.get
-      def initialize(document)
+      def initialize(document, drm_protected = false)
         return if document.nil?
         metadata = document.css('metadata')
         self.titles = metadata.xpath('.//dc:title', EPUBInfo::Utils::DC_NAMESPACE).map(&:content)
@@ -50,9 +55,9 @@ module EPUBInfo
         self.source = metadata.xpath('.//dc:source', EPUBInfo::Utils::DC_NAMESPACE).first.content rescue nil
         self.languages = metadata.xpath('.//dc:language', EPUBInfo::Utils::DC_NAMESPACE).map(&:content)
         self.rights = metadata.xpath('.//dc:rights', EPUBInfo::Utils::DC_NAMESPACE).first.content rescue nil
+        self.drm_protected = drm_protected
       end
 
-      def titles; @titles || []; end
       def creators; @creators || []; end
       def subjects; @subjects || []; end
       def contributors; @contributors || []; end
@@ -74,7 +79,8 @@ module EPUBInfo
           :identifiers => @identifiers.map(&:to_hash),
           :source => @source,
           :languages => @languages,
-          :rights => @rights
+          :rights => @rights,
+          :drm_protected => @drm_protected
         }
       end
     end

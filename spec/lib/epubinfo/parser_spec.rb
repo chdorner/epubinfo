@@ -62,6 +62,33 @@ describe EPUBInfo::Parser do
     end
   end
 
+  describe '#drm_protected?' do
+    it 'should call load_epub if nil' do
+      zipfile_mock = mock(:find_entry => true)
+      parser.should_receive(:load_epub) { parser.instance_variable_set(:@zipfile, zipfile_mock); nil }
+      parser.drm_protected?
+      parser.instance_variable_get(:@zipfile).should == zipfile_mock
+    end
+
+    context 'drm' do
+      let(:epub_path) { File.expand_path('spec/support/binary/metamorphosis_epub2_drm.epub') }
+
+      it 'should return true if rights.xml exists' do
+        parser = EPUBInfo::Parser.parse(epub_path)
+        parser.drm_protected?.should be_true
+      end
+    end
+
+    context 'no drm' do
+      let(:epub_path) { File.expand_path('spec/support/binary/metamorphosis_epub2.epub') }
+
+      it 'should return false if rights.xml does not exist' do
+        parser = EPUBInfo::Parser.parse(epub_path)
+        parser.drm_protected?.should be_false
+      end
+    end
+  end
+
   describe '#load_metadata_file' do
     it 'should return xml document' do
       parser.send(:load_root_file)

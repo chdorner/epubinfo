@@ -12,6 +12,7 @@ describe EPUBInfo::Models::Book do
       its(:source) { should == 'http://www.gutenberg.org/files/5200/5200-h/5200-h.htm' }
       its(:languages) { should == ['en'] }
       its(:rights) { should == 'Copyrighted. Read the copyright notice inside this book for details.' }
+      its(:drm_protected?) { should be_false }
 
       context 'creators' do
         it 'count should be 1' do

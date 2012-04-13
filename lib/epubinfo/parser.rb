@@ -12,6 +12,11 @@ module EPUBInfo
       @metadata_document ||= load_metadata_file
     end
 
+    def drm_protected?
+      load_epub if @zipfile.nil?
+      @drm_protected ||= !!@zipfile.find_entry('META-INF/rights.xml')
+    end
+
     private
 
     def load_epub

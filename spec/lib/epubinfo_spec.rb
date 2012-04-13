@@ -8,6 +8,7 @@ describe EPUBInfo do
       document = EPUBInfo::Parser.parse(epub_path).metadata_document
       parser = mock
       parser.stub(:metadata_document)
+      parser.stub(:drm_protected?)
       EPUBInfo::Parser.should_receive(:parse) { parser }
       EPUBInfo.get(epub_path)
     end

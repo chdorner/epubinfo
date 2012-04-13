@@ -13,6 +13,6 @@ module EPUBInfo
   # @return [EPUBInfo::Models::Book] a model representation of the epub file
   def self.get(path)
     parser = EPUBInfo::Parser.parse(path)
-    EPUBInfo::Models::Book.new(parser.metadata_document)
+    EPUBInfo::Models::Book.new(parser.metadata_document, parser.drm_protected?)
   end
 end
