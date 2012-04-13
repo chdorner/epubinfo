@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "epubinfo"
-  s.version = "0.2.4"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christof Dorner"]
@@ -42,6 +42,7 @@ Gem::Specification.new do |s|
     "spec/lib/epubinfo_spec.rb",
     "spec/spec_helper.rb",
     "spec/support/binary/metamorphosis_epub2.epub",
+    "spec/support/binary/metamorphosis_epub2_drm.epub",
     "spec/support/binary/wasteland_epub3.epub",
     "spec/support/xml/metamorphosis_metadata_epub2.opf",
     "spec/support/xml/wasteland_metadata_epub3.opf"
