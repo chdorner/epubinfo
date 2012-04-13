@@ -45,7 +45,7 @@ DEPENDENCIES
   guard
   guard-rspec
   jeweler (~> 1.8.3)
-  nokogiri (~> 1.5.2)
+  nokogiri (>= 1.4.2)
   rb-fsevent
   rspec (~> 2.9.0)
   rubyzip (~> 0.9.6)
