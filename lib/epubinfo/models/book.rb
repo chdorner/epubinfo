@@ -4,36 +4,53 @@ module EPUBInfo
       # Titles, array of String instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.1 EPUB2 reference})
       # @return [Array]
       attr_accessor :titles
+
       # Creators, array of Person instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.2 EPUB2 reference})
       # @return [Array]
       attr_accessor :creators
+      def creators; @creators || []; end
+
       # Subjects, array of String instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.3 EPUB2 reference})
       # @return [Array]
       attr_accessor :subjects
+      def subjects; @subjects || []; end
+
       # Description ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.4 EPUB2 reference})
       # @return [String]
       attr_accessor :description
+
       # Publisher ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.5 EPUB2 reference})
       # @return [String]
       attr_accessor :publisher
+
       # Contributors, array of Person instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.6 EPUB2 reference})
       # @return [Array]
       attr_accessor :contributors
+      def contributors; @contributors || []; end
+
       # Dates, array of Date instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.7 EPUB2 reference})
       # @return [Array]
       attr_accessor :dates
+      def dates; @dates || []; end
+
       # Identifiers, array of Identifier instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.10 EPUB2 reference})
       # @return [Array]
       attr_accessor :identifiers
+      def identifiers; @identifiers || []; end
+
       # Source ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.11 EPUB2 reference})
       # @return [String]
       attr_accessor :source
+
       # Languages, array of String instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.12 EPUB2 reference})
       # @return [Array]
       attr_accessor :languages
+      def languages; @languages || []; end
+
       # Rights ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.15 EPUB2 reference})
       # @return [String]
       attr_accessor :rights
+
       # DRM protected
       # @return [Boolean]
       attr_accessor :drm_protected
@@ -58,12 +75,6 @@ module EPUBInfo
         self.drm_protected = drm_protected
       end
 
-      def creators; @creators || []; end
-      def subjects; @subjects || []; end
-      def contributors; @contributors || []; end
-      def dates; @dates || []; end
-      def identifiers; @identifiers || []; end
-      def languages; @languages || []; end
 
       # Returns Hash representation of the book
       # @return [Hash]
