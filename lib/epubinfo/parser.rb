@@ -13,29 +13,25 @@ module EPUBInfo
     end
 
     def drm_protected?
-      load_epub if @zipfile.nil?
-      @drm_protected ||= !!@zipfile.find_entry('META-INF/rights.xml')
+      @drm_protected ||= !!zip_file.find_entry('META-INF/rights.xml')
     end
 
     private
 
-    def load_epub
-      @zipfile = Zip::ZipFile.open(@path)
+    def zip_file
+      @zip_file ||= Zip::ZipFile.open(@path)
     end
 
-    def load_root_file
-      load_epub if @zipfile.nil?
-      @root_document = Nokogiri::XML(@zipfile.read('META-INF/container.xml'))
+    def root_document
+      @root_document ||= Nokogiri::XML(zip_file.read('META-INF/container.xml'))
     end
 
     def metadata_path
-      load_root_file if @root_document.nil?
-      @root_document.css('container rootfiles rootfile:first-child').attribute('full-path').content
+      root_document.css('container rootfiles rootfile:first-child').attribute('full-path').content
     end
 
     def load_metadata_file
-      load_epub if @zipfile.nil?
-      Nokogiri::XML(@zipfile.read(metadata_path))
+      Nokogiri::XML(zip_file.read(metadata_path))
     end
   end
 end
