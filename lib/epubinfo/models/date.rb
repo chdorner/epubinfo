@@ -12,7 +12,7 @@ module EPUBInfo
 
       # Should never be called directly, go through EPUBInfo.get
       def initialize(node)
-        self.time = Time.parse(node.content)
+        self.time = Time.parse(node.content) rescue nil
         self.event = node.attribute('event').content rescue nil
       end
 
