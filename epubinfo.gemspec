@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "epubinfo"
-  s.version = "0.3.1"
+  s.version = "0.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christof Dorner"]
-  s.date = "2012-04-13"
+  s.date = "2012-05-03"
   s.description = "Supports EPUB2 and EPUB3 formats."
   s.email = "christof@chdorner.com"
   s.extra_rdoc_files = [
@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<guard-rspec>, [">= 0"])
       s.add_development_dependency(%q<rb-fsevent>, [">= 0"])
       s.add_development_dependency(%q<growl>, [">= 0"])
+      s.add_development_dependency(%q<fuubar>, [">= 0"])
     else
       s.add_dependency(%q<rubyzip>, ["~> 0.9.6"])
       s.add_dependency(%q<nokogiri>, [">= 1.4.2"])
@@ -58,6 +59,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<guard-rspec>, [">= 0"])
       s.add_dependency(%q<rb-fsevent>, [">= 0"])
       s.add_dependency(%q<growl>, [">= 0"])
+      s.add_dependency(%q<fuubar>, [">= 0"])
     end
   else
     s.add_dependency(%q<rubyzip>, ["~> 0.9.6"])
@@ -71,6 +73,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<guard-rspec>, [">= 0"])
     s.add_dependency(%q<rb-fsevent>, [">= 0"])
     s.add_dependency(%q<growl>, [">= 0"])
+    s.add_dependency(%q<fuubar>, [">= 0"])
   end
 end
 
