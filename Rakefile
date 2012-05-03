@@ -37,3 +37,7 @@ YARD::Rake::YardocTask.new do |t|
   #t.options = ['--any', '--extra', '--opts']
 end
 
+Rake::Task['console'].clear
+task :console do
+  sh "irb -I lib -r 'epubinfo'"
+end
