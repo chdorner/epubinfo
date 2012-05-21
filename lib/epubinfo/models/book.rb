@@ -60,18 +60,19 @@ module EPUBInfo
       # Should never be called directly, go through EPUBInfo.get
       def initialize(document, drm_protected = false)
         return if document.nil?
+        document.remove_namespaces!
         metadata = document.css('metadata')
-        self.titles = metadata.xpath('.//dc:title', EPUBInfo::Utils::DC_NAMESPACE).map(&:content)
-        self.creators = metadata.xpath('.//dc:creator', EPUBInfo::Utils::DC_NAMESPACE).map {|c| EPUBInfo::Models::Person.new(c) }
-        self.subjects = metadata.xpath('.//dc:subject', EPUBInfo::Utils::DC_NAMESPACE).map(&:content)
-        self.description = metadata.xpath('.//dc:description', EPUBInfo::Utils::DC_NAMESPACE).first.content rescue nil
-        self.publisher = metadata.xpath('.//dc:publisher', EPUBInfo::Utils::DC_NAMESPACE).first.content rescue nil
-        self.contributors = metadata.xpath('.//dc:contributor', EPUBInfo::Utils::DC_NAMESPACE).map {|c| EPUBInfo::Models::Person.new(c) }
-        self.dates = metadata.xpath('.//dc:date', EPUBInfo::Utils::DC_NAMESPACE).map { |d| EPUBInfo::Models::Date.new(d) }
-        self.identifiers = metadata.xpath('.//dc:identifier', EPUBInfo::Utils::DC_NAMESPACE).map { |i| EPUBInfo::Models::Identifier.new(i) }
-        self.source = metadata.xpath('.//dc:source', EPUBInfo::Utils::DC_NAMESPACE).first.content rescue nil
-        self.languages = metadata.xpath('.//dc:language', EPUBInfo::Utils::DC_NAMESPACE).map(&:content)
-        self.rights = metadata.xpath('.//dc:rights', EPUBInfo::Utils::DC_NAMESPACE).first.content rescue nil
+        self.titles = metadata.xpath('.//title').map(&:content)
+        self.creators = metadata.xpath('.//creator').map {|c| EPUBInfo::Models::Person.new(c) }
+        self.subjects = metadata.xpath('.//subject').map(&:content)
+        self.description = metadata.xpath('.//description').first.content rescue nil
+        self.publisher = metadata.xpath('.//publisher').first.content rescue nil
+        self.contributors = metadata.xpath('.//contributor').map {|c| EPUBInfo::Models::Person.new(c) }
+        self.dates = metadata.xpath('.//date').map { |d| EPUBInfo::Models::Date.new(d) }
+        self.identifiers = metadata.xpath('.//identifier').map { |i| EPUBInfo::Models::Identifier.new(i) }
+        self.source = metadata.xpath('.//source').first.content rescue nil
+        self.languages = metadata.xpath('.//language').map(&:content)
+        self.rights = metadata.xpath('.//rights').first.content rescue nil
         self.drm_protected = drm_protected
       end
 
