@@ -59,7 +59,8 @@ module EPUBInfo
       alias :drm_protected? :drm_protected
 
       # Should never be called directly, go through EPUBInfo.get
-      def initialize(document, drm_protected = false)
+      def initialize(parser)
+        document = parser.metadata_document
         return if document.nil?
         document.remove_namespaces!
         metadata = document.css('metadata')
@@ -74,7 +75,7 @@ module EPUBInfo
         self.source = metadata.xpath('.//source').first.content rescue nil
         self.languages = metadata.xpath('.//language').map(&:content)
         self.rights = metadata.xpath('.//rights').first.content rescue nil
-        self.drm_protected = drm_protected
+        self.drm_protected = parser.drm_protected?
       end
 
 

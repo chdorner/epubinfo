@@ -3,7 +3,10 @@ require 'spec_helper'
 describe EPUBInfo::Models::Book do
   describe '#initialize' do
     context 'EPUB2' do
-      subject { EPUBInfo::Models::Book.new(Nokogiri::XML(File.new('spec/support/xml/metamorphosis_metadata_epub2.opf'))) }
+      subject do
+        parser = EPUBInfo::Parser.parse('spec/support/binary/metamorphosis_epub2.epub')
+        EPUBInfo::Models::Book.new(parser)
+      end
 
       its(:titles) { should == ['Metamorphosis'] }
       its(:subjects) { should == ['Psychological fiction', 'Metamorphosis -- Fiction'] }
@@ -64,7 +67,10 @@ describe EPUBInfo::Models::Book do
     end
 
     context 'EPUB3' do
-      subject { EPUBInfo::Models::Book.new(Nokogiri::XML(File.new('spec/support/xml/wasteland_metadata_epub3.opf'))) }
+      subject do
+        parser = EPUBInfo::Parser.parse('spec/support/binary/wasteland_epub3.epub')
+        EPUBInfo::Models::Book.new(parser)
+      end
 
       its(:titles) { should == ['The Waste Land'] }
       its(:subjects) { should == ['Fiction'] }
@@ -113,7 +119,7 @@ describe EPUBInfo::Models::Book do
   end
 
   context 'default values' do
-    subject { EPUBInfo::Models::Book.new(Nokogiri::XML::Document.new) }
+    subject { EPUBInfo::Models::Book.new(stub(:metadata_document => nil)) }
 
     its(:titles) { should == [] }
     its(:creators) { should == [] }
@@ -126,7 +132,7 @@ describe EPUBInfo::Models::Book do
 
   describe '#to_hash' do
     context 'keys' do
-      subject { EPUBInfo::Models::Book.new(Nokogiri::XML(File.new('spec/support/xml/metamorphosis_metadata_epub2.opf'))).to_hash.keys }
+      subject { EPUBInfo::Models::Book.new(EPUBInfo::Parser.parse('spec/support/binary/metamorphosis_epub2.epub')).to_hash.keys }
       it { should include :titles }
       it { should include :creators }
       it { should include :subjects }
