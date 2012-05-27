@@ -4,6 +4,7 @@ module EPUBInfo
       # Titles, array of String instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.1 EPUB2 reference})
       # @return [Array]
       attr_accessor :titles
+      def titles; @titles || []; end
 
       # Creators, array of Person instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.2 EPUB2 reference})
       # @return [Array]
