@@ -25,5 +25,23 @@ describe EPUBInfo::Parser do
     parser = EPUBInfo::Parser.parse(non_drm_path)
     parser.drm_protected?.should be_false
   end
+
+  context 'unsupported file types' do
+    it 'should raise NotAnEPUBFileError when zip but no epub file' do
+      lambda do
+        zip_path = 'spec/support/binary/zip_file.zip'
+        parser = EPUBInfo::Parser.parse(zip_path)
+        parser.metadata_document
+      end.should raise_error(EPUBInfo::NotAnEPUBFileError)
+    end
+
+    it 'should raise NotAnEPUBFileError when not even zip file' do
+      lambda do
+        image_path = 'spec/support/binary/cover.jpg'
+        parser = EPUBInfo::Parser.parse(image_path)
+        parser.metadata_document
+      end.should raise_error(EPUBInfo::NotAnEPUBFileError)
+    end
+  end
 end
 

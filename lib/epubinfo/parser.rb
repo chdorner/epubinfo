@@ -19,11 +19,19 @@ module EPUBInfo
     private
 
     def zip_file
-      @zip_file ||= Zip::ZipFile.open(@path)
+      begin
+        @zip_file ||= Zip::ZipFile.open(@path)
+      rescue Zip::ZipError => e
+        raise NotAnEPUBFileError.new(e)
+      end
     end
 
     def root_document
-      @root_document ||= Nokogiri::XML(zip_file.read('META-INF/container.xml'))
+      begin
+        @root_document ||= Nokogiri::XML(zip_file.read('META-INF/container.xml'))
+      rescue => e
+        raise NotAnEPUBFileError.new(e)
+      end
     end
 
     def metadata_path

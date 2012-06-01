@@ -11,5 +11,7 @@ module EPUBInfo
       end
     end
   end
+
+  class NotAnEPUBFileError < StandardError; end
 end
 
