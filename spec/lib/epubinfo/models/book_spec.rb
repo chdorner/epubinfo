@@ -18,11 +18,11 @@ describe EPUBInfo::Models::Book do
       its(:drm_protected?) { should be_false }
 
       context 'creators' do
-        it 'count should be 1' do
+        it 'count is 1' do
           subject.creators.count.should == 1
         end
 
-        it 'values should be of type Person' do
+        it 'values are of type Person' do
           subject.creators.each do |creator|
             creator.should be_kind_of EPUBInfo::Models::Person
           end
@@ -30,11 +30,11 @@ describe EPUBInfo::Models::Book do
       end
 
       context 'contributors' do
-        it 'count should be 1' do
+        it 'count is 1' do
           subject.contributors.count.should == 1
         end
 
-        it 'values should be of type Person' do
+        it 'values are of type Person' do
           subject.contributors.each do |contributor|
             contributor.should be_kind_of EPUBInfo::Models::Person
           end
@@ -42,11 +42,11 @@ describe EPUBInfo::Models::Book do
       end
 
       context 'dates' do
-        it 'count should be 1' do
+        it 'count is 1' do
           subject.dates.count.should == 2
         end
 
-        it 'values should be of type Date' do
+        it 'values are of type Date' do
           subject.dates.each do |date|
             date.should be_kind_of EPUBInfo::Models::Date
           end
@@ -54,11 +54,11 @@ describe EPUBInfo::Models::Book do
       end
 
       context 'identifiers' do
-        it 'count should be 1' do
+        it 'count is 1' do
           subject.identifiers.count.should == 1
         end
 
-        it 'values should be of type Identifier' do
+        it 'values are of type Identifier' do
           subject.identifiers.each do |identifier|
             identifier.should be_kind_of EPUBInfo::Models::Identifier
           end
@@ -81,11 +81,11 @@ describe EPUBInfo::Models::Book do
       its(:rights) { should == 'This work is shared with the public using the Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) license.' }
 
       context 'creators' do
-        it 'count should be 1' do
+        it 'count is 1' do
           subject.creators.count.should == 1
         end
 
-        it 'values should be of type Person' do
+        it 'values are of type Person' do
           subject.creators.each do |creator|
             creator.should be_kind_of EPUBInfo::Models::Person
           end
@@ -93,23 +93,23 @@ describe EPUBInfo::Models::Book do
       end
 
       context 'contributors' do
-        it 'count should be 0' do
+        it 'count is 0' do
           subject.contributors.count.should == 0
         end
       end
 
       context 'dates' do
-        it 'count should be 1' do
+        it 'count is 1' do
           subject.dates.count.should == 1
         end
       end
 
       context 'identifiers' do
-        it 'count should be 1' do
+        it 'count is 1' do
           subject.identifiers.count.should == 1
         end
 
-        it 'values should be of type Identifier' do
+        it 'values are of type Identifier' do
           subject.identifiers.each do |identifier|
             identifier.should be_kind_of EPUBInfo::Models::Identifier
           end
