@@ -35,6 +35,7 @@ module EPUBInfo
     end
 
     def metadata_path
+      root_document.remove_namespaces!
       root_document.css('container rootfiles rootfile:first-child').attribute('full-path').content
     end
 
