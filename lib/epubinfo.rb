@@ -1,8 +1,10 @@
 require 'zip/zip'
 require 'nokogiri'
+require 'cgi'
 
 require 'epubinfo/parser'
 require 'epubinfo/models/book'
+require 'epubinfo/models/cover'
 require 'epubinfo/models/person'
 require 'epubinfo/models/date'
 require 'epubinfo/models/identifier'
