@@ -58,6 +58,10 @@ module EPUBInfo
       def drm_protected; @drm_protected || false; end
       alias :drm_protected? :drm_protected
 
+      # Cover
+      # @return [Cover]
+      attr_accessor :cover
+
       # Should never be called directly, go through EPUBInfo.get
       def initialize(parser)
         document = parser.metadata_document
@@ -76,6 +80,7 @@ module EPUBInfo
         self.languages = metadata.xpath('.//language').map(&:content)
         self.rights = metadata.xpath('.//rights').first.content rescue nil
         self.drm_protected = parser.drm_protected?
+        self.cover = EPUBInfo::Models::Cover.new(parser)
       end
 
 
@@ -94,7 +99,8 @@ module EPUBInfo
           :source => @source,
           :languages => @languages,
           :rights => @rights,
-          :drm_protected => @drm_protected
+          :drm_protected => @drm_protected,
+          :cover => @cover,
         }
       end
     end
