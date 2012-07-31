@@ -47,7 +47,7 @@ module EPUBInfo
       #   file.size
       #   file.close!
       def tempfile(&block)
-        tempfile = Tempfile.new("epubinfo")
+        tempfile = Tempfile.new('epubinfo')
         tempfile.binmode
 
         cover_file = @parser.zip_file.read(zip_file_path)
@@ -75,7 +75,7 @@ module EPUBInfo
       def epub_cover_item
         @epub_cover_item ||= begin
           metadata = @parser.metadata_document.css('metadata')
-          cover_id = metadata.css('meta [name=cover]').attr("content").value rescue nil || 'cover-image'
+          cover_id = metadata.css('meta [name=cover]').attr('content').value rescue nil || 'cover-image'
 
           manifest = @parser.metadata_document.css('manifest')
 
