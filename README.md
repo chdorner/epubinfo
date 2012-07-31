@@ -13,6 +13,10 @@ Which returns a `EPUBInfo::Models::Book` instance, please refer to the [API docu
 
 ## Changelog
 
+**0.4.0** *July 31, 2012*
+
+* Added Book#cover method for extracting covers from epubs
+
 **0.3.6** *June 18, 2012*
 
 * Upgraded rubyzip dependency to version 0.9.9 for more robust zip handling
