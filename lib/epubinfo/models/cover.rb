@@ -32,7 +32,8 @@ module EPUBInfo
 
       # Cover exists?
       # @return [Boolean]
-      def exists? # no:doc
+      # @!visibility private
+      def exists?
         !!@path && @parser.zip_file.find_entry(zip_file_path)
       end
 
