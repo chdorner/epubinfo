@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "epubinfo"
-  s.version = "0.3.6"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christof Dorner"]
-  s.date = "2012-06-18"
+  s.date = "2012-07-31"
   s.description = "Supports EPUB2 and EPUB3 formats."
   s.email = "christof@chdorner.com"
   s.extra_rdoc_files = [
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.files = [
     "lib/epubinfo.rb",
     "lib/epubinfo/models/book.rb",
+    "lib/epubinfo/models/cover.rb",
     "lib/epubinfo/models/date.rb",
     "lib/epubinfo/models/identifier.rb",
     "lib/epubinfo/models/person.rb",
@@ -28,7 +29,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/chdorner/epubinfo"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.11"
+  s.rubygems_version = "1.8.24"
   s.summary = "Extracts metadata information from EPUB files"
 
   if s.respond_to? :specification_version then
