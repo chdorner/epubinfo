@@ -16,6 +16,7 @@ describe EPUBInfo::Models::Book do
       its(:languages) { should == ['en'] }
       its(:rights) { should == 'Copyrighted. Read the copyright notice inside this book for details.' }
       its(:drm_protected?) { should be_false }
+      its(:cover) { should be_kind_of EPUBInfo::Models::Cover }
 
       context 'creators' do
         it 'count is 1' do
@@ -79,6 +80,7 @@ describe EPUBInfo::Models::Book do
       its(:source) { should == 'http://code.google.com/p/epub-samples/downloads/detail?name=wasteland-20120118.epub' }
       its(:languages) { should == ['en-US'] }
       its(:rights) { should == 'This work is shared with the public using the Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) license.' }
+      its(:cover) { should be_kind_of EPUBInfo::Models::Cover }
 
       context 'creators' do
         it 'count is 1' do
@@ -128,6 +130,7 @@ describe EPUBInfo::Models::Book do
     its(:dates) { should == [] }
     its(:identifiers) { should == [] }
     its(:languages) { should == [] }
+    its(:cover) { should be_nil }
   end
 
   describe '#to_hash' do
@@ -144,6 +147,7 @@ describe EPUBInfo::Models::Book do
       it { should include :source }
       it { should include :languages }
       it { should include :rights }
+      it { should include :cover }
     end
   end
 end

@@ -16,8 +16,6 @@ module EPUBInfo
       @drm_protected ||= !!zip_file.find_entry('META-INF/rights.xml')
     end
 
-    private
-
     def zip_file
       begin
         @zip_file ||= Zip::ZipFile.open(@path)
@@ -26,17 +24,21 @@ module EPUBInfo
       end
     end
 
+    def metadata_path
+      @metadata_path ||= begin
+        root_document.remove_namespaces!
+        root_document.css('container rootfiles rootfile:first-child').attribute('full-path').content
+      end
+    end
+
+    private
+
     def root_document
       begin
         @root_document ||= Nokogiri::XML(zip_file.read('META-INF/container.xml'))
       rescue => e
         raise NotAnEPUBFileError.new(e)
       end
-    end
-
-    def metadata_path
-      root_document.remove_namespaces!
-      root_document.css('container rootfiles rootfile:first-child').attribute('full-path').content
     end
 
     def load_metadata_file
