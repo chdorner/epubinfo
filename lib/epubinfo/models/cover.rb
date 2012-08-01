@@ -28,7 +28,6 @@ module EPUBInfo
       # Content type of cover file
       # @return [String]
       attr_accessor :content_type
-      def content_type; @content_type; end
 
       # Cover exists?
       # @return [Boolean]
@@ -41,6 +40,7 @@ module EPUBInfo
       # @return [File]
       # Tempfile is used to enable access to cover file
       # If block is passed, the tempfile is passed to it
+      # and closed after the block is executed
       #   cover.file do { |f| puts f.size }
       # Otherwise user is responsible to unlink and close tempfile
       #   file = book.cover.file
@@ -75,7 +75,7 @@ module EPUBInfo
       def epub_cover_item
         @epub_cover_item ||= begin
           metadata = @parser.metadata_document.css('metadata')
-          cover_id = metadata.css('meta [name=cover]').attr('content').value rescue nil || 'cover-image'
+          cover_id = (metadata.css('meta [name=cover]').attr('content').value rescue nil) || 'cover-image'
 
           manifest = @parser.metadata_document.css('manifest')
 
