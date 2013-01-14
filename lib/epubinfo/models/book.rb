@@ -62,12 +62,17 @@ module EPUBInfo
       # @return [Cover]
       attr_accessor :cover
 
+      # EPUB Version ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section1.4.1.2})
+      # @return [String]
+      attr_accessor :version
+
       # Should never be called directly, go through EPUBInfo.get
       def initialize(parser)
         document = parser.metadata_document
         return if document.nil?
         document.remove_namespaces!
         metadata = document.css('metadata')
+        self.version = document.css('package')[0]['version']
         self.titles = metadata.xpath('.//title').map(&:content)
         self.creators = metadata.xpath('.//creator').map {|c| EPUBInfo::Models::Person.new(c) }
         self.subjects = metadata.xpath('.//subject').map(&:content)
