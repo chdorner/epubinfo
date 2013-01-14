@@ -17,6 +17,7 @@ describe EPUBInfo::Models::Book do
       its(:rights) { should == 'Copyrighted. Read the copyright notice inside this book for details.' }
       its(:drm_protected?) { should be_false }
       its(:cover) { should be_kind_of EPUBInfo::Models::Cover }
+      its(:version) { should == '2.0' }
 
       context 'creators' do
         it 'count is 1' do
@@ -81,6 +82,7 @@ describe EPUBInfo::Models::Book do
       its(:languages) { should == ['en-US'] }
       its(:rights) { should == 'This work is shared with the public using the Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) license.' }
       its(:cover) { should be_kind_of EPUBInfo::Models::Cover }
+      its(:version) { should == '3.0' }
 
       context 'creators' do
         it 'count is 1' do
