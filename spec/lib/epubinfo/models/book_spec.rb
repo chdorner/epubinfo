@@ -44,7 +44,7 @@ describe EPUBInfo::Models::Book do
       end
 
       context 'dates' do
-        it 'count is 1' do
+        it 'count is 2' do
           subject.dates.count.should == 2
         end
 
