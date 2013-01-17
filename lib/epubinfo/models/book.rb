@@ -80,6 +80,12 @@ module EPUBInfo
         self.publisher = metadata.xpath('.//publisher').first.content rescue nil
         self.contributors = metadata.xpath('.//contributor').map {|c| EPUBInfo::Models::Person.new(c) }
         self.dates = metadata.xpath('.//date').map { |d| EPUBInfo::Models::Date.new(d) }
+        modified_date = metadata.xpath(".//meta[@property='dcterms:modified']").map do |d|
+          date = EPUBInfo::Models::Date.new(d)
+          date.event = 'modification'
+          date
+        end
+        self.dates += modified_date;
         self.identifiers = metadata.xpath('.//identifier').map { |i| EPUBInfo::Models::Identifier.new(i) }
         self.source = metadata.xpath('.//source').first.content rescue nil
         self.languages = metadata.xpath('.//language').map(&:content)
