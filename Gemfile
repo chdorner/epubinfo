@@ -20,4 +20,5 @@ group :development do
   gem "rb-fsevent"
   gem "growl"
   gem "fuubar"
+  gem "redcarpet"
 end
