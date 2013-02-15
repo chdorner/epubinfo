@@ -12,7 +12,7 @@ gem "nokogiri", ">= 1.4.2"
 group :development do
   gem "rspec", "~> 2.10.0"
   gem "yard", "~> 0.8.1"
-  gem "bundler", "~> 1.1.3"
+  gem "bundler", "~> 1.2.4"
   gem "jeweler", "~> 1.8.3"
   gem "simplecov", ">= 0"
   gem "guard"
