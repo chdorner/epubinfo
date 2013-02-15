@@ -12,6 +12,11 @@ Which returns a `EPUBInfo::Models::Book` instance, please refer to the [API docu
 
 ## Changelog
 
+**0.4.1** *February 15, 2013*
+
+* Added Book#version to get EPUB version of the file
+* Added support for modified_date in Book#dates
+
 **0.4.0** *July 31, 2012*
 
 * Added Book#cover method for extracting covers from epubs
