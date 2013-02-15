@@ -1,5 +1,4 @@
-# epubinfo [![Continuous Integration](https://secure.travis-ci.org/chdorner/epubinfo.png?branch=master)](http://travis-ci.org/chdorner/epubinfo) [![Dependencies](https://gemnasium.com/chdorner/epubinfo.png)](http://gemnasium.com/chdorner/epubinfo)
-
+# epubinfo [![Continuous Integration](https://secure.travis-ci.org/chdorner/epubinfo.png?branch=master)](http://travis-ci.org/chdorner/epubinfo)
 Extracts metadata information from EPUB files. Supports EPUB2 and EPUB3 formats.
 
 ## Usage
