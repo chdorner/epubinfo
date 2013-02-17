@@ -79,8 +79,9 @@ module EPUBInfo
 
           manifest = @parser.metadata_document.css('manifest')
 
-          manifest.css("item [id = #{cover_id}]").first rescue nil ||
-            manifest.css("item [property = #{cover_id}]").first rescue nil
+          (manifest.css("item [id = #{cover_id}]").first rescue nil) ||
+            (manifest.css("item [properties = #{cover_id}]").first rescue nil) ||
+            (manifest.css("item [property = #{cover_id}]").first rescue nil)
         end
       end
 
