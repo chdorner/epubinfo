@@ -58,6 +58,29 @@ describe EPUBInfo::Models::Cover do
       end
     end
 
+    context 'with "img-bookcover-jpeg" cover id' do
+      subject do
+        path = 'spec/support/binary/illustrations_epub2.epub'
+        parser = EPUBInfo::Parser.parse(path)
+        EPUBInfo::Models::Cover.new(parser)
+      end
+
+      its(:content_type) { should == 'image/jpeg' }
+      its(:original_file_name) { should == 'bookcover.jpg' }
+
+      it 'file should be correct File' do
+        subject.tempfile.should be_kind_of File
+        subject.tempfile.size.should == 50242
+      end
+
+      it 'file should take block' do
+        subject.tempfile do |file|
+          file.should be_kind_of File
+          file.size.should == 50242
+        end
+      end
+    end
+
     context 'EPUB3 with cover' do
       subject do
         path = 'spec/support/binary/wasteland_epub3.epub'
