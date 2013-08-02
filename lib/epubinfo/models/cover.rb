@@ -81,7 +81,8 @@ module EPUBInfo
 
           (manifest.css("item [id = #{cover_id}]").first rescue nil) ||
             (manifest.css("item [properties = #{cover_id}]").first rescue nil) ||
-            (manifest.css("item [property = #{cover_id}]").first rescue nil)
+            (manifest.css("item [property = #{cover_id}]").first rescue nil) ||
+            (manifest.css("item [id = img-bookcover-jpeg]").first rescue nil)
         end
       end
 
