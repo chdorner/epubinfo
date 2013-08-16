@@ -12,6 +12,11 @@ Which returns a `EPUBInfo::Models::Book` instance, please refer to the [API docu
 
 ## Changelog
 
+**0.4.2** *August 16, 2013*
+
+* Improved cover detection for EPUB3 (by [takahashim](https://github.com/takahashim))
+* Improved cover detection for EPUB2 (by [cyrret](https://github.com/cyrret))
+
 **0.4.1** *February 15, 2013*
 
 * Added Book#version to get EPUB version of the file (by [takahashim](https://github.com/takahashim))
