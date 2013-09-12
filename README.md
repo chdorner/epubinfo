@@ -12,6 +12,10 @@ Which returns a `EPUBInfo::Models::Book` instance, please refer to the [API docu
 
 ## Changelog
 
+**0.4.3** *September 12, 2013*
+
+* Made cover detection more robust by escaping the CSS selectors (by [versapub](https://github.com/versapub))
+
 **0.4.2** *August 16, 2013*
 
 * Improved cover detection for EPUB3 (by [takahashim](https://github.com/takahashim))
