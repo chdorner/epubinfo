@@ -123,7 +123,7 @@ describe EPUBInfo::Models::Book do
   end
 
   context 'default values' do
-    subject { EPUBInfo::Models::Book.new(stub(:metadata_document => nil)) }
+    subject { EPUBInfo::Models::Book.new(double(:metadata_document => nil)) }
 
     its(:titles) { should == [] }
     its(:creators) { should == [] }

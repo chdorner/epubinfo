@@ -6,7 +6,7 @@ describe EPUBInfo do
   describe '#get' do
     it 'calls parser' do
       document = EPUBInfo::Parser.parse(epub_path).metadata_document
-      parser = mock
+      parser = double
       parser.stub(:metadata_document)
       parser.stub(:drm_protected?)
       EPUBInfo::Parser.should_receive(:parse) { parser }
@@ -14,7 +14,7 @@ describe EPUBInfo do
     end
 
     it 'instanstiates a book model and returns it' do
-      book_mock = mock
+      book_mock = double
       EPUBInfo::Models::Book.should_receive(:new) { book_mock }
       EPUBInfo.get(epub_path).should == book_mock
     end

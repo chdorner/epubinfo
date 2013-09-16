@@ -30,13 +30,13 @@ describe EPUBInfo::Models::Cover do
         its(:original_file_name) { should == 'cover.jpg' }
 
         it 'should be correct File' do
-          subject.tempfile.should be_kind_of File
+          subject.tempfile.should be_kind_of Tempfile
           subject.tempfile.size.should == 19263
         end
 
         it 'file should take block' do
           subject.tempfile do |file|
-            file.should be_kind_of File
+            file.should be_kind_of Tempfile
             file.size.should == 19263
           end
         end
@@ -51,7 +51,7 @@ describe EPUBInfo::Models::Cover do
 
         it 'should have correct File' do
           subject.tempfile do |file|
-            file.should be_kind_of File
+            file.should be_kind_of Tempfile
             file.size.should == 1908
           end
         end
@@ -69,13 +69,13 @@ describe EPUBInfo::Models::Cover do
       its(:original_file_name) { should == 'bookcover.jpg' }
 
       it 'file should be correct File' do
-        subject.tempfile.should be_kind_of File
+        subject.tempfile.should be_kind_of Tempfile
         subject.tempfile.size.should == 50242
       end
 
       it 'file should take block' do
         subject.tempfile do |file|
-          file.should be_kind_of File
+          file.should be_kind_of Tempfile
           file.size.should == 50242
         end
       end
@@ -92,13 +92,13 @@ describe EPUBInfo::Models::Cover do
       its(:original_file_name) { should == 'wasteland-cover.jpg' }
 
       it 'file should be correct File' do
-        subject.tempfile.should be_kind_of File
+        subject.tempfile.should be_kind_of Tempfile
         subject.tempfile.size.should == 103477
       end
 
       it 'file should take block' do
         subject.tempfile do |file|
-          file.should be_kind_of File
+          file.should be_kind_of Tempfile
           file.size.should == 103477
         end
       end
