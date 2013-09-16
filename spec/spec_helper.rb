@@ -7,11 +7,6 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
-require 'simplecov'
-SimpleCov.start do
-  add_filter 'spec'
-end
-
 require 'epubinfo'
 
 RSpec.configure do |config|
