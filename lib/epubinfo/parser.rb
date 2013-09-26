@@ -31,6 +31,13 @@ module EPUBInfo
       end
     end
 
+    def metadata_type
+      @metadata_type ||= begin
+        root_document.remove_namespaces!
+        root_document.css('container rootfiles rootfile:first-child').attribute('media-type').content
+      end
+    end
+
     private
 
     def root_document

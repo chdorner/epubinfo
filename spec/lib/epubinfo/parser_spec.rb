@@ -14,6 +14,10 @@ describe EPUBInfo::Parser do
     id_node.content.should == 'http://www.gutenberg.org/ebooks/5200'
   end
 
+  it 'exposes the metadata type' do
+    subject.metadata_type.should == "application/oebps-package+xml"
+  end
+
   it 'returns true for drm protected files' do
     drm_path = 'spec/support/binary/metamorphosis_epub2_drm.epub'
     parser = EPUBInfo::Parser.parse(drm_path)
