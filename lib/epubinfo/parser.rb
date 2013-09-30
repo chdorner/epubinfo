@@ -2,9 +2,9 @@ module EPUBInfo
   class Parser
     attr_accessor :path, :metadata_document
 
-    def self.parse(path)
+    def self.parse(path_io)
       epubinfo = EPUBInfo::Parser.new
-      epubinfo.path = path
+      epubinfo.path =  path_io.is_a?(IO) ? path_io.path : path_io
       epubinfo
     end
 
