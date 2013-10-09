@@ -156,5 +156,13 @@ describe EPUBInfo::Models::Book do
       it { should include :table_of_contents }
     end
   end
+
+  describe "read file from an IO object" do
+    context "from IO" do
+       it "should return an eBook object" do
+         EPUBInfo.get(File.open('spec/support/binary/coverinroot_epub2.epub')).should be_kind_of EPUBInfo::Models::Book
+       end
+    end
+  end
 end
 

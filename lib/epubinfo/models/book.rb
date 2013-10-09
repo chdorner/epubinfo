@@ -117,6 +117,7 @@ module EPUBInfo
           :rights => @rights,
           :drm_protected => @drm_protected,
           :cover => @cover,
+          :table_of_contents => @table_of_contents
         }
       end
     end
