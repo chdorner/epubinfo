@@ -22,7 +22,7 @@ describe EPUBInfo::Models::TableOfContents do
       end
 
       it "should return the parsed TOC as a list or resources" do
-        subject.resources.should be_kind_of Array
+        subject.resources.should be_kind_of Resource
         subject.resources.count.should == 1
         subject.resources.first[:text].should.eql?('Section 1')
       end
@@ -48,7 +48,7 @@ describe EPUBInfo::Models::TableOfContents do
       end
 
       it "should return the parsed TOC as a list or resources" do
-        subject.resources.should be_kind_of Array
+        subject.resources.should be_kind_of Resource
         subject.resources.count.should == 1
         subject.resources.first[:text].should.eql?('Section 1')
       end

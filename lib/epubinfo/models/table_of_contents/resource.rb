@@ -36,7 +36,7 @@ class Resource
       end
     end
 
-    return nil
+    return self.to_a
   end
 
   def each
