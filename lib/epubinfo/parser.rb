@@ -2,9 +2,9 @@ module EPUBInfo
   class Parser
     attr_accessor :path, :metadata_document
 
-    def self.parse(path)
+    def self.parse(path_io)
       epubinfo = EPUBInfo::Parser.new
-      epubinfo.path = path
+      epubinfo.path =  path_io.is_a?(IO) ? path_io.path : path_io
       epubinfo
     end
 
@@ -28,6 +28,13 @@ module EPUBInfo
       @metadata_path ||= begin
         root_document.remove_namespaces!
         root_document.css('container rootfiles rootfile:first-child').attribute('full-path').content
+      end
+    end
+
+    def metadata_type
+      @metadata_type ||= begin
+        root_document.remove_namespaces!
+        root_document.css('container rootfiles rootfile:first-child').attribute('media-type').content
       end
     end
 

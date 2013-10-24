@@ -62,6 +62,10 @@ module EPUBInfo
       # @return [Cover]
       attr_accessor :cover
 
+      #Table of Contents
+      # @return [TableOfContents]
+      attr_accessor :table_of_contents
+
       # EPUB Version ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section1.4.1.2})
       # @return [String]
       attr_accessor :version
@@ -92,6 +96,7 @@ module EPUBInfo
         self.rights = metadata.xpath('.//rights').first.content rescue nil
         self.drm_protected = parser.drm_protected?
         self.cover = EPUBInfo::Models::Cover.new(parser)
+        self.table_of_contents = EPUBInfo::Models::TableOfContents.new(parser)
       end
 
 
@@ -112,6 +117,7 @@ module EPUBInfo
           :rights => @rights,
           :drm_protected => @drm_protected,
           :cover => @cover,
+          :table_of_contents => @table_of_contents
         }
       end
     end

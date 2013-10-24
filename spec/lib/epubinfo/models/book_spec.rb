@@ -17,6 +17,7 @@ describe EPUBInfo::Models::Book do
       its(:rights) { should == 'Copyrighted. Read the copyright notice inside this book for details.' }
       its(:drm_protected?) { should be_false }
       its(:cover) { should be_kind_of EPUBInfo::Models::Cover }
+      its(:table_of_contents) { should be_kind_of EPUBInfo::Models::TableOfContents }
       its(:version) { should == '2.0' }
 
       context 'creators' do
@@ -82,6 +83,7 @@ describe EPUBInfo::Models::Book do
       its(:languages) { should == ['en-US'] }
       its(:rights) { should == 'This work is shared with the public using the Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) license.' }
       its(:cover) { should be_kind_of EPUBInfo::Models::Cover }
+      its(:table_of_contents) { should be_kind_of EPUBInfo::Models::TableOfContents }
       its(:version) { should == '3.0' }
 
       context 'creators' do
@@ -133,6 +135,7 @@ describe EPUBInfo::Models::Book do
     its(:identifiers) { should == [] }
     its(:languages) { should == [] }
     its(:cover) { should be_nil }
+    its(:table_of_contents) { should be_nil }
   end
 
   describe '#to_hash' do
@@ -150,6 +153,15 @@ describe EPUBInfo::Models::Book do
       it { should include :languages }
       it { should include :rights }
       it { should include :cover }
+      it { should include :table_of_contents }
+    end
+  end
+
+  describe "read file from an IO object" do
+    context "from IO" do
+       it "should return an eBook object" do
+         EPUBInfo.get(File.open('spec/support/binary/coverinroot_epub2.epub')).should be_kind_of EPUBInfo::Models::Book
+       end
     end
   end
 end
