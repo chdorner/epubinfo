@@ -92,7 +92,7 @@ module EPUBInfo
         self.dates += modified_date;
         self.identifiers = metadata.xpath('.//identifier').map { |i| EPUBInfo::Models::Identifier.new(i) }
         unique_id = document.css('package')[0]['unique-identifier']
-        self.unique_identifier = EPUBInfo::Models::Identifier.new(metadata.xpath(".//identifier[@id='#{unique_id}']")) rescue nil
+        self.unique_identifier = self.identifiers.select { |identifier| identifier.id = unique_id }[0]
         self.source = metadata.xpath('.//source').first.content rescue nil
         self.languages = metadata.xpath('.//language').map(&:content)
         self.rights = metadata.xpath('.//rights').first.content rescue nil
@@ -113,6 +113,7 @@ module EPUBInfo
           :contributors => @contributors.map(&:to_hash),
           :dates => @dates.map(&:to_hash),
           :identifiers => @identifiers.map(&:to_hash),
+          :unique_identifier => @unique_identifier,
           :source => @source,
           :languages => @languages,
           :rights => @rights,
