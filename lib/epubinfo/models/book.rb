@@ -39,6 +39,10 @@ module EPUBInfo
       attr_accessor :identifiers
       def identifiers; @identifiers || []; end
 
+      # Unique identifier, Identifier instance ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.10 EPUB2 reference})
+      # @return [Identifier]
+      attr_accessor :unique_identifier
+
       # Source ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.11 EPUB2 reference})
       # @return [String]
       attr_accessor :source
@@ -87,6 +91,8 @@ module EPUBInfo
         end
         self.dates += modified_date;
         self.identifiers = metadata.xpath('.//identifier').map { |i| EPUBInfo::Models::Identifier.new(i) }
+        unique_id = document.css('package')[0]['unique-identifier']
+        self.unique_identifier = EPUBInfo::Models::Identifier.new(metadata.xpath(".//identifier[@id='#{unique_id}']")) rescue nil
         self.source = metadata.xpath('.//source').first.content rescue nil
         self.languages = metadata.xpath('.//language').map(&:content)
         self.rights = metadata.xpath('.//rights').first.content rescue nil
