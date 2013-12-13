@@ -16,6 +16,11 @@ module EPUBInfo
       attr_accessor :subjects
       def subjects; @subjects || []; end
 
+      # Types, array of String instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.8 EPUB2 reference})
+      # @return [Array]
+      attr_accessor :types
+      def types; @types || []; end
+
       # Description ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.4 EPUB2 reference})
       # @return [String]
       attr_accessor :description
@@ -80,6 +85,7 @@ module EPUBInfo
         self.titles = metadata.xpath('.//title').map(&:content)
         self.creators = metadata.xpath('.//creator').map {|c| EPUBInfo::Models::Person.new(c) }
         self.subjects = metadata.xpath('.//subject').map(&:content)
+        self.types = metadata.xpath('.//type').map(&:content)
         self.description = metadata.xpath('.//description').first.content rescue nil
         self.publisher = metadata.xpath('.//publisher').first.content rescue nil
         self.contributors = metadata.xpath('.//contributor').map {|c| EPUBInfo::Models::Person.new(c) }
@@ -108,6 +114,7 @@ module EPUBInfo
           :titles => @titles,
           :creators => @creators.map(&:to_hash),
           :subjects => @subjects,
+          :types => @types,
           :description => @description,
           :publisher => @publisher,
           :contributors => @contributors.map(&:to_hash),
