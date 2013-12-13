@@ -16,6 +16,11 @@ module EPUBInfo
       attr_accessor :subjects
       def subjects; @subjects || []; end
 
+      # Types, array of String instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.8 EPUB2 reference})
+      # @return [Array]
+      attr_accessor :types
+      def types; @types || []; end
+
       # Description ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.4 EPUB2 reference})
       # @return [String]
       attr_accessor :description
@@ -38,6 +43,10 @@ module EPUBInfo
       # @return [Array]
       attr_accessor :identifiers
       def identifiers; @identifiers || []; end
+
+      # Unique identifier, Identifier instance ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.10 EPUB2 reference})
+      # @return [Identifier]
+      attr_accessor :unique_identifier
 
       # Source ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2.11 EPUB2 reference})
       # @return [String]
@@ -76,6 +85,7 @@ module EPUBInfo
         self.titles = metadata.xpath('.//title').map(&:content)
         self.creators = metadata.xpath('.//creator').map {|c| EPUBInfo::Models::Person.new(c) }
         self.subjects = metadata.xpath('.//subject').map(&:content)
+        self.types = metadata.xpath('.//type').map(&:content)
         self.description = metadata.xpath('.//description').first.content rescue nil
         self.publisher = metadata.xpath('.//publisher').first.content rescue nil
         self.contributors = metadata.xpath('.//contributor').map {|c| EPUBInfo::Models::Person.new(c) }
@@ -87,6 +97,8 @@ module EPUBInfo
         end
         self.dates += modified_date;
         self.identifiers = metadata.xpath('.//identifier').map { |i| EPUBInfo::Models::Identifier.new(i) }
+        unique_id = document.css('package')[0]['unique-identifier']
+        self.unique_identifier = self.identifiers.select { |identifier| identifier.id = unique_id }[0]
         self.source = metadata.xpath('.//source').first.content rescue nil
         self.languages = metadata.xpath('.//language').map(&:content)
         self.rights = metadata.xpath('.//rights').first.content rescue nil
@@ -102,11 +114,13 @@ module EPUBInfo
           :titles => @titles,
           :creators => @creators.map(&:to_hash),
           :subjects => @subjects,
+          :types => @types,
           :description => @description,
           :publisher => @publisher,
           :contributors => @contributors.map(&:to_hash),
           :dates => @dates.map(&:to_hash),
           :identifiers => @identifiers.map(&:to_hash),
+          :unique_identifier => @unique_identifier,
           :source => @source,
           :languages => @languages,
           :rights => @rights,
