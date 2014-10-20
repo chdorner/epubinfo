@@ -16,7 +16,7 @@ Which returns a `EPUBInfo::Models::Book` instance, please refer to the [API docu
 
 * Updated `rubyzip` dependency to 1.0. (by [johankok](https://github.com/johankok))
 
-If cannot upgrade to `rubyzip` 1.0, use version *0.4.3* in your project.
+If you cannot upgrade to `rubyzip` 1.0, use version *0.4.3* of this gem in your project.
 
 **0.4.3** *September 12, 2013*
 
