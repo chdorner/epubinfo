@@ -66,6 +66,12 @@ module EPUBInfo
       # @return [String]
       attr_accessor :version
 
+      # Manifest, array of ManifestItem instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.3})
+      # @return [Array]
+      attr_accessor :manifest
+      def manifest; @manifest || []; end
+
+
       # Should never be called directly, go through EPUBInfo.get
       def initialize(parser)
         document = parser.metadata_document
@@ -92,6 +98,7 @@ module EPUBInfo
         self.rights = metadata.xpath('.//rights').first.content rescue nil
         self.drm_protected = parser.drm_protected?
         self.cover = EPUBInfo::Models::Cover.new(parser)
+        self.manifest = document.xpath('.//manifest/item').map {|i| EPUBInfo::Models::ManifestItem.new(i) }
       end
 
 

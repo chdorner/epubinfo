@@ -66,6 +66,18 @@ describe EPUBInfo::Models::Book do
           end
         end
       end
+
+      context 'manifest' do
+        it 'count is 4' do
+          subject.manifest.count.should == 4
+        end
+
+        it 'values are of type ManifestItem' do
+          subject.manifest.each do |item|
+            item.should be_kind_of EPUBInfo::Models::ManifestItem
+          end
+        end
+      end
     end
 
     context 'EPUB3' do
@@ -116,6 +128,18 @@ describe EPUBInfo::Models::Book do
         it 'values are of type Identifier' do
           subject.identifiers.each do |identifier|
             identifier.should be_kind_of EPUBInfo::Models::Identifier
+          end
+        end
+      end
+
+      context 'manifest' do
+        it 'count is 6' do
+          subject.manifest.count.should == 6
+        end
+
+        it 'values are of type ManifestItem' do
+          subject.manifest.each do |item|
+            item.should be_kind_of EPUBInfo::Models::ManifestItem
           end
         end
       end
