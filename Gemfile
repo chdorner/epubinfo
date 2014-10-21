@@ -12,6 +12,6 @@ gem 'nokogiri', '>= 1.4.2'
 group :development do
   gem 'rspec', '~> 2.14.1'
   gem 'yard', '~> 0.8.7'
-  gem 'jeweler', '~> 1.8.3'
+  gem 'jeweler', '~> 2.0.1'
   gem 'redcarpet'
 end
