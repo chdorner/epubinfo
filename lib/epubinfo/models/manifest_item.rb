@@ -4,8 +4,8 @@ module EPUBInfo
       # String ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.3 EPUB2 reference})
       # @return String
       attr_accessor :id
-      # URI: a URI; if relative, the URI is interpreted as relative to the OPF Package Document file containing the reference ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.3 EPUB2 reference})
-      # @return URI
+      # String: a URI relative to the root of the ePub file. if relative, the URI is interpreted as relative to the OPF Package Document file containing the reference ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.3 EPUB2 reference})
+      # @return String
       attr_accessor :href
       # String: specifying the item’s MIME media type ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.3 EPUB2 reference})
       # @return String
