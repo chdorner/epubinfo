@@ -66,6 +66,16 @@ module EPUBInfo
       # @return [String]
       attr_accessor :version
 
+      # Manifest, array of ManifestItem instances ({http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.3})
+      # @return [Array]
+      attr_accessor :manifest
+      def manifest; @manifest || []; end
+
+      # Metadata directory, location of the OPF Package Document inside the zipped document. ManifestItem href's can be relative to the metadata_dir
+      # @return [String]
+      attr_accessor :metadata_dir
+
+
       # Should never be called directly, go through EPUBInfo.get
       def initialize(parser)
         document = parser.metadata_document
@@ -92,8 +102,9 @@ module EPUBInfo
         self.rights = metadata.xpath('.//rights').first.content rescue nil
         self.drm_protected = parser.drm_protected?
         self.cover = EPUBInfo::Models::Cover.new(parser)
+        self.manifest = document.xpath('.//manifest/item').map {|i| EPUBInfo::Models::ManifestItem.new(i) }
+        self.metadata_dir = File.dirname(parser.metadata_path)
       end
-
 
       # Returns Hash representation of the book
       # @return [Hash]

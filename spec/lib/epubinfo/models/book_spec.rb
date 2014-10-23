@@ -18,6 +18,7 @@ describe EPUBInfo::Models::Book do
       its(:drm_protected?) { should be_false }
       its(:cover) { should be_kind_of EPUBInfo::Models::Cover }
       its(:version) { should == '2.0' }
+      its(:metadata_dir) { should == '5200' }
 
       context 'creators' do
         it 'count is 1' do
@@ -66,6 +67,18 @@ describe EPUBInfo::Models::Book do
           end
         end
       end
+
+      context 'manifest' do
+        it 'count is 4' do
+          subject.manifest.count.should == 4
+        end
+
+        it 'values are of type ManifestItem' do
+          subject.manifest.each do |item|
+            item.should be_kind_of EPUBInfo::Models::ManifestItem
+          end
+        end
+      end
     end
 
     context 'EPUB3' do
@@ -83,6 +96,7 @@ describe EPUBInfo::Models::Book do
       its(:rights) { should == 'This work is shared with the public using the Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) license.' }
       its(:cover) { should be_kind_of EPUBInfo::Models::Cover }
       its(:version) { should == '3.0' }
+      its(:metadata_dir) { should == 'EPUB' }
 
       context 'creators' do
         it 'count is 1' do
@@ -119,6 +133,18 @@ describe EPUBInfo::Models::Book do
           end
         end
       end
+
+      context 'manifest' do
+        it 'count is 6' do
+          subject.manifest.count.should == 6
+        end
+
+        it 'values are of type ManifestItem' do
+          subject.manifest.each do |item|
+            item.should be_kind_of EPUBInfo::Models::ManifestItem
+          end
+        end
+      end
     end
   end
 
@@ -133,6 +159,7 @@ describe EPUBInfo::Models::Book do
     its(:identifiers) { should == [] }
     its(:languages) { should == [] }
     its(:cover) { should be_nil }
+    its(:metadata_dir) { should be_nil }
   end
 
   describe '#to_hash' do

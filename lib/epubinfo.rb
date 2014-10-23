@@ -8,6 +8,7 @@ require 'epubinfo/models/cover'
 require 'epubinfo/models/person'
 require 'epubinfo/models/date'
 require 'epubinfo/models/identifier'
+require 'epubinfo/models/manifest_item'
 require 'epubinfo/utils'
 
 module EPUBInfo
