@@ -75,14 +75,14 @@ module EPUBInfo
       def epub_cover_item
         @epub_cover_item ||= begin
           metadata = @parser.metadata_document.css('metadata')
-          cover_id = (metadata.css('meta [name=cover]').attr('content').value rescue nil) || 'cover-image'
+          cover_id = (metadata.css('meta[name=cover]').attr('content').value rescue nil) || 'cover-image'
 
           manifest = @parser.metadata_document.css('manifest')
 
-          (manifest.css("item [id = \"#{cover_id}\"]").first rescue nil) ||
-            (manifest.css("item [properties = \"#{cover_id}\"]").first rescue nil) ||
-            (manifest.css("item [property = \"#{cover_id}\"]").first rescue nil) ||
-            (manifest.css("item [id = img-bookcover-jpeg]").first rescue nil)
+          (manifest.css("item[id = \"#{cover_id}\"]").first rescue nil) ||
+            (manifest.css("item[properties = \"#{cover_id}\"]").first rescue nil) ||
+            (manifest.css("item[property = \"#{cover_id}\"]").first rescue nil) ||
+            (manifest.css("item[id = img-bookcover-jpeg]").first rescue nil)
         end
       end
 
