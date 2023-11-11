@@ -1,3 +1,5 @@
+# MOVED TO CODEBERG - [codeberg.org/chdorner/epubinfo](https://codeberg.org/chdorner/epubinfo)
+
 # epubinfo [![Continuous Integration](https://secure.travis-ci.org/chdorner/epubinfo.png?branch=master)](http://travis-ci.org/chdorner/epubinfo)
 Extracts metadata information from EPUB files. Supports EPUB2 and EPUB3 formats.
 
